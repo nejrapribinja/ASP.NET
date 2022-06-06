@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Imenik</h1>
+
+<table class="table">
+    <thead>
+        <th>ID</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Broj</th>
+        <th>Adresa</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var i in Model.listaImenik)
+        {
+            <tr>
+                <td>@i.id</td>
+                <td>@i.ime</td>
+                <td>@i.prezime</td>
+                <td>@i.broj</td>
+                <td>@i.adresa</td>
+                <td>
+                    <a class="btn btn-primary" href="/Imenik/Uredi?id=@i.id">Uredi</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="/Imenik/Obrisi?id=@i.id">Obriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<a class="btn btn-primary" href='/Imenik/Dodaj'>Dodaj kontakt</a>

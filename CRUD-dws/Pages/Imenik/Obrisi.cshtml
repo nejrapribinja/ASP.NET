@@ -1,0 +1,28 @@
+﻿@page 
+@using System.Data.SqlClient;
+@{
+
+    try
+    {
+        String id = Request.Query["id"];
+
+        String konekcijaString = "Data Source=.\\tew_sqlexpress;Initial Catalog=crud;Integrated Security=True";
+        using (SqlConnection konekcija = new SqlConnection(konekcijaString))
+        {
+            konekcija.Open();
+
+            String sql = "DELETE FROM imenik WHERE id=@id";
+            using (SqlCommand komanda = new SqlCommand(sql, konekcija))
+            {
+                komanda.Parameters.AddWithValue("@id", id);
+                komanda.ExecuteNonQuery();
+            }
+        }
+
+    } catch (Exception ex)
+    {
+        Console.WriteLine(ex);
+    }
+
+    Response.Redirect("/");
+}

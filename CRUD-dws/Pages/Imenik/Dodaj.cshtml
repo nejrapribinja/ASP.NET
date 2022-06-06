@@ -1,0 +1,50 @@
+﻿@page
+@model CRUD_dws.Pages.DodajModel
+@{
+}
+
+
+<h2>Dodajte novi kontakt</h2>
+
+@if (Model.greska.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.greska</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="post">
+    <div class="row mb-3">
+        <label class="col-form-label">Ime</label>
+        <input type="text" class="form-control" name="ime" value="@Model.imenikPodaci.ime"/>
+    </div>
+    <div class="row mb-3">
+        <label class="col-form-label">Prezime</label>
+        <input type="text" class="form-control" name="prezime" value="@Model.imenikPodaci.prezime"/>
+    </div>
+    <div class="row mb-3">
+        <label class="col-form-label">Broj</label>
+        <input type="text" class="form-control" name="broj" value="@Model.imenikPodaci.broj"/>
+    </div>
+    <div class="row mb-3">
+        <label class="col-form-label">Adresa</label>
+        <input type="text" class="form-control" name="adresa" value="@Model.imenikPodaci.adresa"/>
+    </div>
+
+
+    @if (Model.uspjeh.Length > 0)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@Model.uspjeh</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Dodaj</button>
+            <a class="btn btn-outline-primary" href="/" role="button">Nazad</a>
+        </div>
+    </div>
+</form>
